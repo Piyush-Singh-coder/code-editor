@@ -99,7 +99,7 @@ function SnippetDetailPage() {
               <Editor
                 height="400px"
                 language={
-                  LANGUAGE_CONFIG[snippet.language]?.monacoLanguage ||
+                  (LANGUAGE_CONFIG as any)[snippet.language]?.monacoLanguage ||
                   "plaintext"
                 }
                 value={snippet.code}
