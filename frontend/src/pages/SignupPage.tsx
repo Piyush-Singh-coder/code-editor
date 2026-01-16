@@ -52,20 +52,12 @@ const SignupPage = () => {
       <div className="flex flex-col justify-center items-center p-6 sm:p-12 bg-base-100">
         <div className="w-full max-w-md space-y-8">
           {/* Header */}
-          <div className="text-center mb-8">
-            <div className="flex flex-col items-center gap-2 group">
-              <div
-                className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20
-              transition-colors"
-              >
-                <div className="i-lucide-user w-6 h-6 text-primary" />
-                <User className="w-6 h-6 text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold mt-2">Create Account</h2>
-              <p className="text-base-content/60">
-                Get started with your free account
-              </p>
+          <div className="text-center mb-8 space-y-2">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-4 ring-1 ring-primary/20">
+              <User className="w-8 h-8 text-primary" />
             </div>
+            <h2 className="text-3xl font-bold tracking-tight">Create Account</h2>
+            <p className="text-base-content/60">Get started with your free account</p>
           </div>
 
           {/* Form */}

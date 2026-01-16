@@ -31,7 +31,7 @@ const Navbar = () => {
           <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-lg opacity-0 group-hover:opacity-100 transition-all blur-xl"></div>
           <div className="relative bg-base-300/50 p-2 rounded-xl ring-1 ring-base-content/10 group-hover:ring-primary/50 transition-all shadow-lg">
             <div className="w-7 h-7 flex items-center justify-center text-primary">
-              <img src="logo.png" alt="logo" className="w-12 h-8"/>
+              <img src="logo1.png" alt="logo" className="w-15 h-9"/>
             </div>
           </div>
           <div className="relative">

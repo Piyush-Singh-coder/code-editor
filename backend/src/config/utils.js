@@ -2,46 +2,44 @@ import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 
 export const generateToken = (userId, res) => {
-    const token = jwt.sign({userId}, process.env.JWT_SECRET, {
-        expiresIn: '2d',
-    })
+  const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
+    expiresIn: "2d",
+  });
 
-    res.cookie('jwt', token,{
-        maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
-        httpOnly: true,
-        sameSite: 'strict',
-        secure: process.env.NODE_ENV !== 'development',
-    })
-    return token;
-}
+  res.cookie("jwt", token, {
+    maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
+    httpOnly: true,
+    sameSite: "strict",
+    secure: process.env.NODE_ENV !== "development",
+  });
+  return token;
+};
 
+export const sendVerificationEmail = async (user, token) => {
+  // Create transporter object using your email service provider's SMTP settings
 
-export const sendVerificationEmail = async (user,token) => {
-    // Create transporter object using your email service provider's SMTP settings
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth:{
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-        },
-    });
-
-    const mailOptions = {
-        from: '"Horizon Editor" <noreply@myapp.com>',
-        to: user.email,
-        subject: "Email Verification",
-        html: `
+  const mailOptions = {
+    from: '"Horizon Editor" <noreply@myapp.com>',
+    to: user.email,
+    subject: "Email Verification",
+    html: `
         <h1>Welcome to Horizon Editor!</h1>
         <p>Please verify your email by clicking the link below:</p>
         <a href="${process.env.FRONTEND_URL}/verify/${token}">Verify Email</a>
-        <p> This link will expire in 24 hours.</p>
+        <p> This link will expire in 48 hours.</p>
         <h3> Thank you!</h3>
-        `
-    };
-    await transporter.sendMail(mailOptions);
-}
-
+        `,
+  };
+  await transporter.sendMail(mailOptions);
+};
 
 // Import the functions you need from the SDKs you need
 

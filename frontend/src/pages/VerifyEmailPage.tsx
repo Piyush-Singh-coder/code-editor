@@ -18,7 +18,7 @@ const VerifyEmailPage = () => {
       toast.success("Email verified successfully!");
       navigate("/");
     } else {
-      toast.error("Email not verified yet. Please check your inbox.");
+      console.log("Email not verified yet");
     }
   };
 

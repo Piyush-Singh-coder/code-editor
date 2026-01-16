@@ -36,6 +36,7 @@ interface AuthState {
   login: (data: LoginData) => Promise<void>;
   logout: () => Promise<void>;
   googleLogin: () => Promise<void>;
+  verifyEmail: (token: string) => Promise<void>;
   checkAuth: () => Promise<void>;
 }
 
@@ -72,7 +73,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       const response = await axiosInstance.post("/auth/login", data);
       set({ user: response.data, isLoggingIn: false });
-      console.log(response.data);
+      // console.log(response.data);
       toast.success("Logged in successfully");
     } catch (error: unknown) {
       console.log("Error in login", error);
@@ -128,6 +129,24 @@ export const useAuthStore = create<AuthState>((set) => ({
         error: errorMessage,
         isLoggingIn: false,
       });
+      toast.error(errorMessage);
+      throw error;
+    }
+  },
+
+  verifyEmail: async (token) => {
+    set({ isCheckingAuth: true, error: null });
+    try {
+      await axiosInstance.post(`/auth/verify`, { token });
+      set({ isCheckingAuth: false });
+      toast.success("Email verified successfully");
+    } catch (error: unknown) {
+      console.log("Error in verifyEmail", error);
+      let errorMessage = "Error verifying email";
+      if (error instanceof AxiosError && error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      }
+      set({ error: errorMessage, isCheckingAuth: false });
       toast.error(errorMessage);
       throw error;
     }

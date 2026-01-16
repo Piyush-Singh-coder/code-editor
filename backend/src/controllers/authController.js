@@ -41,6 +41,7 @@ export const register = async (req, res) => {
       _id: user._id,
       fullName: user.fullName,
       email: user.email,
+      isVerified: user.isVerified,
     });
   } catch (error) {
     console.error("error in register controller:", error);
@@ -49,7 +50,7 @@ export const register = async (req, res) => {
 };
 
 export const verify = async (req, res) => {
-  const { token } = req.params;
+  const { token } = req.body;
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
