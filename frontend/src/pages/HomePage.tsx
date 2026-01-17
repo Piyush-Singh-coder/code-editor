@@ -50,14 +50,25 @@ const HomePage = () => {
         {/* Main Content */}
         <main className="flex-1 flex flex-col min-w-0 bg-base-200/30">
           {/* Toolbar */}
-          <div className="h-14 border-b border-base-300 bg-base-100/50 backdrop-blur flex items-center justify-between px-4 z-10 shrink-0">
-            {/* Left: Selectors */}
-            <div className="flex items-center gap-3">
+          <div className="h-auto md:h-14 border-b border-base-300 bg-base-100/50 backdrop-blur flex flex-col md:flex-row items-center justify-between p-3 md:p-0 md:px-4 gap-3 md:gap-0 z-10 shrink-0">
+            {/* Left: Selectors & Refresh */}
+            <div className="flex items-center gap-3 w-full md:w-auto">
               <LanguageSelector />
               <ThemeSelector />
 
+              <button
+                onClick={handleRefresh}
+                className="btn btn-ghost btn-sm btn-square"
+                title="Reset Code"
+              >
+                <RotateCcwIcon className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Right: Font Size & Actions */}
+            <div className="flex items-center gap-2 w-full md:w-auto justify-end">
               {/* Font Size Slider */}
-              <div className="items-center gap-2 bg-base-200/50 px-3 py-1.5 rounded-lg ring-1 ring-base-content/10 hidden sm:flex">
+              <div className="flex items-center gap-2 bg-base-200/50 px-3 py-1.5 rounded-lg ring-1 ring-base-content/10">
                 <TypeIcon className="size-3.5 text-base-content/70" />
                 <input
                   type="range"
@@ -70,32 +81,21 @@ const HomePage = () => {
                   className="range range-xs range-primary w-20"
                 />
               </div>
-            </div>
-
-            {/* Right: Actions */}
-            <div className="flex items-center gap-3">
-              <button
-                onClick={handleRefresh}
-                className="btn btn-ghost btn-sm btn-square"
-                title="Reset Code"
-              >
-                <RotateCcwIcon className="w-4 h-4" />
-              </button>
 
               {user && (
                 <>
                   <button
                     onClick={() => setIsSaveDialogOpen(true)}
-                    className="btn btn-ghost btn-sm"
+                    className="btn btn-ghost btn-sm px-2"
                   >
-                    <SaveIcon className="w-4 h-4 mr-2" />
+                    <SaveIcon className="w-4 h-4 mr-1" />
                     Save
                   </button>
                   <button
                     onClick={() => setIsShareDialogOpen(true)}
-                    className="btn btn-ghost btn-sm text-primary"
+                    className="btn btn-ghost btn-sm text-primary px-2"
                   >
-                    <ShareIcon className="w-4 h-4 mr-2" />
+                    <ShareIcon className="w-4 h-4 mr-1" />
                     Share
                   </button>
                 </>

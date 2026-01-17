@@ -135,7 +135,7 @@ const Navbar = () => {
         <div className="md:hidden bg-base-100/95 backdrop-blur-xl border-t border-base-300 shadow-xl absolute w-full left-0 animate-in slide-in-from-top-2 duration-200 z-40">
           <div className="p-4 flex flex-col gap-4">
             <div className="grid grid-cols-3 gap-2 p-2 bg-base-200 rounded-xl border border-base-300">
-              {themes.slice(0, 6).map((t) => (
+              {themes.map((t) => (
                 <button
                   key={t}
                   onClick={() => setTheme(t)}
