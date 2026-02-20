@@ -33,7 +33,7 @@ const getInitialState = () => {
   const savedLanguage = localStorage.getItem("editor-language") || "javascript";
   const savedTheme = localStorage.getItem("editor-theme") || "vs-dark";
   const savedFontSize = parseInt(
-    localStorage.getItem("editor-font-size") || "16"
+    localStorage.getItem("editor-font-size") || "16",
   );
 
   return {
@@ -76,14 +76,13 @@ export const useCodeEditorStore = create<CodeEditorState>((set, get) => {
       set({ isRunning: true, error: null, output: "" });
 
       try {
-        const runtime =
-          LANGUAGE_CONFIG[language as keyof typeof LANGUAGE_CONFIG]
-            .pistonRuntime;
+        const languageConfig =
+          LANGUAGE_CONFIG[language as keyof typeof LANGUAGE_CONFIG];
+        const languageId = languageConfig.judge0Id;
         const sourceCode = editor ? editor.getValue() : code;
 
         const response = await axiosInstance.post("/execution/execute", {
-          language: runtime.language,
-          version: runtime.version,
+          languageId,
           code: sourceCode,
         });
 

@@ -3,7 +3,7 @@ export const LANGUAGE_CONFIG = {
     id: "javascript",
     label: "JavaScript",
     logoPath: "/javascript.png",
-    pistonRuntime: { language: "javascript", version: "18.15.0" },
+    judge0Id: 93, // JavaScript (Node.js 18.15.0)
     monacoLanguage: "javascript",
     defaultCode: `// JavaScript Boilerplate
 // Start writing your logic below
@@ -19,7 +19,7 @@ main();`,
     id: "typescript",
     label: "TypeScript",
     logoPath: "/typescript.png",
-    pistonRuntime: { language: "typescript", version: "5.0.3" },
+    judge0Id: 94, // TypeScript (5.0.3)
     monacoLanguage: "typescript",
     defaultCode: `// TypeScript Boilerplate
 // Start writing your logic below
@@ -35,7 +35,7 @@ main();`,
     id: "python",
     label: "Python",
     logoPath: "/python.png",
-    pistonRuntime: { language: "python", version: "3.10.0" },
+    judge0Id: 92, // Python (3.11.2)
     monacoLanguage: "python",
     defaultCode: `# Python Boilerplate
 # Start writing your logic below
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     id: "java",
     label: "Java",
     logoPath: "/java.png",
-    pistonRuntime: { language: "java", version: "15.0.2" },
+    judge0Id: 91, // Java (JDK 17.0.6)
     monacoLanguage: "java",
     defaultCode: `public class Main {
 
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     id: "go",
     label: "Go",
     logoPath: "/go.png",
-    pistonRuntime: { language: "go", version: "1.16.2" },
+    judge0Id: 95, // Go (1.18.5)
     monacoLanguage: "go",
     defaultCode: `package main
 
@@ -83,7 +83,7 @@ func main() {
     id: "rust",
     label: "Rust",
     logoPath: "/rust.png",
-    pistonRuntime: { language: "rust", version: "1.68.2" },
+    judge0Id: 73, // Rust (1.40.0)
     monacoLanguage: "rust",
     defaultCode: `fn main() {
     // Start writing your logic here
@@ -94,7 +94,7 @@ func main() {
     id: "cpp",
     label: "C++",
     logoPath: "/cpp.png",
-    pistonRuntime: { language: "cpp", version: "10.2.0" },
+    judge0Id: 54, // C++ (GCC 9.2.0)
     monacoLanguage: "cpp",
     defaultCode: `#include <iostream>
 
@@ -108,7 +108,7 @@ int main() {
     id: "csharp",
     label: "C#",
     logoPath: "/csharp.png",
-    pistonRuntime: { language: "csharp", version: "6.12.0" },
+    judge0Id: 51, // C# (Mono 6.6.0.161)
     monacoLanguage: "csharp",
     defaultCode: `using System;
 
@@ -125,7 +125,7 @@ class Program
     id: "ruby",
     label: "Ruby",
     logoPath: "/ruby.png",
-    pistonRuntime: { language: "ruby", version: "3.0.1" },
+    judge0Id: 72, // Ruby (2.7.0)
     monacoLanguage: "ruby",
     defaultCode: `# Ruby Boilerplate
 # Start writing your logic below
@@ -141,7 +141,7 @@ main`,
     id: "swift",
     label: "Swift",
     logoPath: "/swift.png",
-    pistonRuntime: { language: "swift", version: "5.3.3" },
+    judge0Id: 83, // Swift (5.2.3)
     monacoLanguage: "swift",
     defaultCode: `// Swift Boilerplate
 // Start writing your logic below
@@ -250,6 +250,6 @@ export const defineMonacoThemes = (monaco: any) => {
         rules: themeData.rules,
         colors: themeData.colors,
       });
-    }
+    },
   );
 };
